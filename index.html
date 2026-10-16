@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HullForge – design and print watertight hulls</title>
+<meta name="description" content="Hull generator optimised for your payload and speed, and a print split with watertight bolted joints for any printer.">
+<style>
+  :root {
+    --bg: #f6f8fb; --fg: #17202a; --muted: #5a6573; --card: #ffffff; --line: #dde3ea;
+    --accent: #1f6fb2; --accent-fg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #11161c; --fg: #e8edf2; --muted: #9aa6b2; --card: #1a2129; --line: #2a333d;
+            --accent: #5aa7e6; --accent-fg: #0b1218; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 980px; margin: 0 auto; padding: 32px 16px 64px; }
+  header h1 { font-size: clamp(28px, 5vw, 44px); line-height: 1.15; margin: 8px 0 12px; }
+  header p { font-size: 19px; color: var(--muted); margin: 0 0 24px; max-width: 46em; }
+  .brand { font-weight: 700; letter-spacing: .02em; color: var(--accent); }
+  .hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: center; }
+  .hero img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); background: #fff; }
+  @media (max-width: 760px) { .hero { grid-template-columns: 1fr; } }
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 40px 0; }
+  @media (max-width: 760px) { .features { grid-template-columns: 1fr; } }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
+  .card h2 { font-size: 18px; margin: 0 0 8px; }
+  .card p { margin: 0; color: var(--muted); font-size: 16px; }
+  .facts { color: var(--muted); font-size: 15px; margin: 0 0 32px; }
+  .signup { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 22px; }
+  .signup h2 { margin: 0 0 6px; font-size: 22px; }
+  .price { margin: 0 0 16px; color: var(--muted); }
+  form { display: flex; gap: 10px; flex-wrap: wrap; }
+  input[type=email] { flex: 1 1 240px; padding: 12px 14px; font-size: 16px; border-radius: 8px;
+                      border: 1px solid var(--line); background: var(--bg); color: var(--fg); }
+  button { padding: 12px 20px; font-size: 16px; font-weight: 600; border: 0; border-radius: 8px;
+           background: var(--accent); color: var(--accent-fg); cursor: pointer; }
+  .small { font-size: 14px; color: var(--muted); margin: 12px 0 0; }
+  footer { margin-top: 40px; font-size: 14px; color: var(--muted); }
+  .small a, footer a { color: inherit; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="brand">HullForge</div>
+    <div class="hero">
+      <div>
+        <h1>Design a boat hull for its job, then print it watertight.</h1>
+        <p>Give the payload, the speed and the size limits. HullForge generates the hull with the least power
+           that meets them, checks that it floats with any one compartment flooded, and splits it into pieces
+           for your printer with bolted, gasketed joints.</p>
+      </div>
+      <img src="asv.png" width="520" height="330"
+           alt="A 1.2 m printed catamaran with thrusters, GNSS antennas, a lidar mast and an electronics box">
+    </div>
+  </header>
+
+  <section class="features">
+    <div class="card">
+      <h2>Hull generator</h2>
+      <p>Monohull, catamaran, trimaran or pontoons. Hydrostatics, stability, wave and friction resistance,
+         thrust and battery endurance — optimised, with every constraint shown met or missed.</p>
+    </div>
+    <div class="card">
+      <h2>Watertight print split</h2>
+      <p>The fewest pieces that fit your bed, flanges with gasket grooves, heat-set insert bosses and
+         bulkheads. Exports each piece as 3MF on the bed, with the screw and cord list.</p>
+    </div>
+    <div class="card">
+      <h2>Drones on water</h2>
+      <p>Mounts for thrusters, dual-GNSS antennas, lidar and sonars; ArduPilot parameters and a ROS 2 URDF
+         of the craft. And full parametric CAD for everything else you print.</p>
+    </div>
+  </section>
+
+  <p class="facts">Example: a 1.2 m catamaran for 15 kg of payload at 1.5 m/s splits into five pieces per hull on a
+     256 mm printer — 57 M3 screws, 2.5 m of gasket cord, about 2.8 kg of PETG a hull.</p>
+
+  <section class="signup" id="early-access">
+    <h2>Get early access</h2>
+    <p class="price">Planned: 9 EUR a month, or 99 EUR once for the version. 30-day free trial. Windows.</p>
+    <!-- The Tally form (an e-mail field and a hidden field "source"); TALLY_FORM_ID is its id from tally.so -->
+    <div id="signup-form" data-form="TALLY_FORM_ID">
+      <p class="small">The sign-up form opens here shortly.</p>
+    </div>
+    <p class="small">HullForge is in early access. Leave your address and you get the trial when it opens —
+       no other mail. Your address is kept only for that, and deleted after it
+       (<a href="privacy.html">privacy</a>).</p>
+  </section>
+
+  <footer>HullForge uses Open CASCADE Technology, Manifold and Qt. · <a href="privacy.html">Privacy</a></footer>
+</main>
+<script>
+  // The Tally form, told which ad brought the visitor (its hidden field "source")
+  (function () {
+    var box = document.getElementById('signup-form');
+    var id = box.getAttribute('data-form');
+    if (!id || id === 'TALLY_FORM_ID') { return; }
+    var source = 'direct';
+    try { source = new URLSearchParams(location.search).get('utm_source') || 'direct'; } catch (e) { }
+    box.innerHTML = '';
+    var frame = document.createElement('iframe');
+    frame.setAttribute('data-tally-src', 'https://tally.so/embed/' + id +
+      '?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&source=' + encodeURIComponent(source));
+    frame.setAttribute('loading', 'lazy');
+    frame.setAttribute('width', '100%');
+    frame.setAttribute('height', '180');
+    frame.setAttribute('frameborder', '0');
+    frame.setAttribute('title', 'Get early access');
+    box.appendChild(frame);
+    var tally = document.createElement('script');
+    tally.src = 'https://tally.so/widgets/embed.js';
+    tally.async = true;
+    tally.onload = function () { if (window.Tally) { window.Tally.loadEmbeds(); } };
+    document.body.appendChild(tally);
+  })();
+</script>
