@@ -39,6 +39,8 @@
   button { padding: 12px 20px; font-size: 16px; font-weight: 600; border: 0; border-radius: 8px;
            background: var(--accent); color: var(--accent-fg); cursor: pointer; }
   .small { font-size: 14px; color: var(--muted); margin: 12px 0 0; }
+  /* Tally draws its form dark on light: a light card keeps it legible in the dark theme too */
+  #signup-form iframe { background: #ffffff; border-radius: 8px; padding: 8px 12px; box-sizing: border-box; }
   footer { margin-top: 40px; font-size: 14px; color: var(--muted); }
   .small a, footer a { color: inherit; }
 </style>
@@ -105,7 +107,7 @@
     box.innerHTML = '';
     var frame = document.createElement('iframe');
     frame.setAttribute('data-tally-src', 'https://tally.so/embed/' + id +
-      '?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&source=' + encodeURIComponent(source));
+      '?alignLeft=1&hideTitle=1&dynamicHeight=1&source=' + encodeURIComponent(source));
     frame.setAttribute('loading', 'lazy');
     frame.setAttribute('width', '100%');
     frame.setAttribute('height', '180');
